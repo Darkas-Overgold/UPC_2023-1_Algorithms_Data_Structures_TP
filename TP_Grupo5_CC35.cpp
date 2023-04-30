@@ -2,7 +2,8 @@
 #include <iostream>
 #include <string>
 
-int main() {
+
+int main() {/*
     Remitente<std::string> remitente;
     Destinatario<std::string> destinatario;
 
@@ -28,7 +29,37 @@ int main() {
     std::cout << "Ubicacion:\n";
     std::cout << "Distrito: " << remitente.getUbicacion().getDistrito() << std::endl;
     std::cout << "Provincia: " << remitente.getUbicacion().getProvincia() << std::endl;
-    std::cout << "Departamento: " << remitente.getUbicacion().getDepartamento() << std::endl;
+    std::cout << "Departamento: " << remitente.getUbicacion().getDepartamento() << std::endl;*/
+
+    ListaEnlazada<std::string, float> list;
+    //Destinatario
+    Ubicacion<std::string> ubicacion;
+    ubicacion.setDistrito("Miraflores");
+    ubicacion.setProvincia("Lima");
+    ubicacion.setDepartamento("Lima");
+
+    Destinatario<std::string>* destinatario = new Destinatario<std::string>(ubicacion);
+    destinatario->setDni("12345678");
+    destinatario->setNombre("JuanPerez");
+    destinatario->setCelular("98765431");
+    destinatario->setDireccion("Av. Pardo 123");
+    destinatario->setReferencias("Cerca al Parque Kennedy");
+    //Remitente
+    Ubicacion<std::string> ubicacion2;
+    ubicacion2.setDistrito("Lince");
+    ubicacion2.setProvincia("LD");
+    ubicacion2.setDepartamento("ASDma");
+
+    Remitente<std::string>* remitente = new Remitente<std::string>(ubicacion);
+    remitente->setCelular("987456123");
+    remitente->setDni("912372192");
+    remitente->setNombre("Espantaviejas");
+    //Paquete
+    Paquete<float>* paquete = new Paquete<float>(70.7, 13.4, 10.5, 10.9);
+
+    list.agregarElemento(destinatario, remitente, paquete);
+    list.mostrarElemento();
+
     _getch();
     return 0;
 }
