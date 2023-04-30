@@ -1,43 +1,67 @@
-#pragma once
+#include "Ubicacion.hpp"
 #include <iostream>
+
 template <typename T>
 class Clientes {
-private:
+protected:
     T dni;
     T nombre;
     T celular;
+    Ubicacion<T> ubicacion;
 public:
-    void setDni(T dni) {
-        if ((dni.length() != 8) || (!isdigit(dni[0]))) {
-            std::cout << "Error en introducir el DNI\n";
-        }
-        else {
-            this->dni = dni;
-        }
+    Clientes(Ubicacion<T> ubicacion) {
+        this->ubicacion = ubicacion;
     }
+    ~Clientes() {}
 
-    T getDni() {
-        return dni;
-    }
 
-    void setNombre(T nombre) {
-        this->nombre = nombre;
-    }
+    void setCelular(T celular);
+    void setDni(T dni);
+    void setNombre(T nombre);
 
-    T getNombre() {
-        return nombre;
-    }
+    T getCelular();
+    T getDni();
+    T getNombre();
+    Ubicacion<T> getUbicacion();
 
-    void setCelular(T celular) {
-        if ((celular.length() != 9) || (!isdigit(celular[0]))) {
-            std::cout << "Error al introducir el numero de celular\n";
-        }
-        else {
-            this->celular = celular;
-        }
-    }
-
-    T getCelular() {
-        return celular;
-    }
 };
+//Setters
+template <typename T>
+void Clientes<T>::setCelular(T celular) {
+    if ((celular.length() != 9) || (!isdigit(celular[0]))) {
+        std::cout << "Error al introducir el numero de celular\n";
+    }
+    else {
+        this->celular = celular;
+    }
+}
+template <typename T>
+void Clientes<T>::setDni(T dni) {
+    if ((dni.length() != 8) || (!isdigit(dni[0]))) {
+        std::cout << "Error en introducir el DNI\n";
+    }
+    else {
+        this->dni = dni;
+    }
+}
+template <typename T>
+void Clientes<T>::setNombre(T nombre) {
+    this->nombre = nombre;
+}
+//Getters
+template <typename T>
+T Clientes<T>::getCelular() {
+    return celular;
+}
+template <typename T>
+T Clientes<T>::getDni() {
+    return dni;
+}
+template <typename T>
+T Clientes<T>::getNombre() {
+    return nombre;
+}
+template <typename T>
+Ubicacion<T> Clientes<T>::getUbicacion() {
+    return ubicacion;
+}
