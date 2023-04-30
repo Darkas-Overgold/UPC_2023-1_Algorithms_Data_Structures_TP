@@ -1,34 +1,25 @@
-#pragma once
-#include "Ubicacion.hpp"
+#include "Clientes.hpp"
 #include <iostream>
+
 template <typename T>
 class Destinatario : public Clientes<T> {
 private:
     T direccion;
     T referencias;
-    Ubicacion<T> ubicacion;
 public:
-    void setDireccion(T direccion) {
-        this->direccion = direccion;
-    }
+    Destinatario(Ubicacion<T> ubicacion) : Clientes<T>(ubicacion) {}
 
-    T getDireccion() {
-        return direccion;
-    }
+    void setDireccion(T direccion);
+    void setReferencias(T referencias);
+    T getDireccion();
+    T getReferencias();
 
-    void setReferencias(T referencias) {
-        this->referencias = referencias;
-    }
-
-    T getReferencias() {
-        return referencias;
-    }
-
-    void setUbicacion(Ubicacion<T> ubicacion) {
-        this->ubicacion = ubicacion;
-    }
-
-    Ubicacion<T> getUbicacion() {
-        return ubicacion;
-    }
 };
+template <typename T>
+void Destinatario<T>::setDireccion(T direccion) { this->direccion = direccion; }
+template <typename T>
+void Destinatario<T>::setReferencias(T referencias) { this->referencias = referencias; }
+template <typename T>
+T Destinatario<T>::getDireccion() { return direccion; }
+template <typename T>
+T Destinatario<T>::getReferencias() { return referencias; }
