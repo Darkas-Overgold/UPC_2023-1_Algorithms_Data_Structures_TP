@@ -1,3 +1,5 @@
+#pragma once
+
 #include "Paquete.hpp"
 #include "Destinatario.hpp"
 #include "Remitente.hpp"
@@ -51,7 +53,7 @@ template<typename T, typename F>
 void ListaEnlazada<T, F>::mostrarElemento() {
     Nodo<T, F>* actual = primero;
     while (actual != nullptr) {
-        std::cout << "\n***********REMITENTE***********\n";
+        std::cout << "\n************REMITENTE************\n";
         std::cout << "\nNombre: " << actual->remitente->getNombre();
         std::cout << "\nDNI: " << actual->remitente->getDni();
         std::cout << "\nCelular: " << actual->remitente->getCelular();
@@ -59,7 +61,7 @@ void ListaEnlazada<T, F>::mostrarElemento() {
         std::cout << "\nProvincia: " << actual->remitente->getUbicacion().getProvincia();
         std::cout << "\nDepartamento: " << actual->remitente->getUbicacion().getDepartamento();
         std::cout << "\n---------------------------------------";
-        std::cout << "\n***********DESTINATARIO***********\n";
+        std::cout << "\n************DESTINATARIO************\n";
         std::cout << "\nNombre: " << actual->destinatario->getNombre();
         std::cout << "\nDNI: " << actual->destinatario->getDni();
         std::cout << "\nCelular: " << actual->destinatario->getCelular();
@@ -67,7 +69,7 @@ void ListaEnlazada<T, F>::mostrarElemento() {
         std::cout << "\nProvincia: " << actual->destinatario->getUbicacion().getProvincia();
         std::cout << "\nDepartamento: " << actual->destinatario->getUbicacion().getDepartamento();
         std::cout << "\n---------------------------------------";
-        std::cout << "\n***********PAQUETE***********\n";
+        std::cout << "\n************PAQUETE************\n";
         std::cout << "\nPrecio: " << actual->paquete->getPrecio();
         std::cout << "\n---------------------------------------";
         actual = actual->siguiente;

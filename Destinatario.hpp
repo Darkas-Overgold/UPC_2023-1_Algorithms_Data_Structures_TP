@@ -1,3 +1,5 @@
+#pragma once
+
 #include "Clientes.hpp"
 #include <iostream>
 
@@ -13,7 +15,7 @@ public:
     void setReferencias(T referencias);
     T getDireccion();
     T getReferencias();
-
+    
 };
 template <typename T>
 void Destinatario<T>::setDireccion(T direccion) { this->direccion = direccion; }

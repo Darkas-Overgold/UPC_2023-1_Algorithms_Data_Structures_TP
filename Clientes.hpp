@@ -1,3 +1,5 @@
+#pragma once
+
 #include "Ubicacion.hpp"
 #include <iostream>
 
@@ -23,7 +25,7 @@ public:
     T getDni();
     T getNombre();
     Ubicacion<T> getUbicacion();
-
+    
 };
 //Setters
 template <typename T>
@@ -65,3 +67,5 @@ template <typename T>
 Ubicacion<T> Clientes<T>::getUbicacion() {
     return ubicacion;
 }
+
+

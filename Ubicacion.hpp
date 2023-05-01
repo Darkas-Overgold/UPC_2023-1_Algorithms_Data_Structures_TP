@@ -16,7 +16,7 @@ public:
     T getProvincia();
     T getDistrito();
     T getDepartamento();
-};
+}; 
 //Setters
 template <typename T>
 void Ubicacion<T>::setDistrito(T distrito) {
