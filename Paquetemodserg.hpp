@@ -38,4 +38,3 @@ template <typename T>
 Producto<T> Paquete<T>::getProducto() {
     return producto;
 }
-
