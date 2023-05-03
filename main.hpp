@@ -94,7 +94,7 @@ int main() {
                 Producto<double> producto(peso, alto, ancho, largo);
                 
      
-                Paquete<std::string>paquete= new Paquete(remitente,Destinatario,producto);
+                Paquete<std::string>paquete(remitente,Destinatario,producto);
                 lista.agregarAlInicio(paquete);
                 break;
             }
