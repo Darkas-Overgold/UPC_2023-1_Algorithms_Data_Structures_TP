@@ -1,7 +1,10 @@
 #include <iostream>
 #include "ListaDobleEnlazada.hpp"
 #include "Producto.hpp"
-
+#include "Ubicacion.hpp"
+#include "Destinatario.hpp"
+#include "Remitente.hpp"
+#include "Paquete.hpp"
 int main() {
     ListaDobleEnlazada<Producto<int>> lista;
 
@@ -69,7 +72,6 @@ int main() {
     Destinatario.setCelular(celularDestinatario);
     Destinatario.setDireccion(direccionDestinatario);
     Destinatario.setReferencias(referenciasDestinatario);
-    
                 
                 
     //datos del producto
@@ -91,9 +93,6 @@ int main() {
                 
      
                 
-                
-                
-           
                 break;
             }
             case 2: {
@@ -110,6 +109,8 @@ int main() {
                         actual = actual->getSiguiente();
                     }
                 }
+                
+                
                 break;
                 case 3:
                 std::cout << "Saliendo del programa...\n";
