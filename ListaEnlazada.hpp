@@ -26,9 +26,9 @@ public:
 
     ListaEnlazada() : primero(nullptr) {}
     void agregarElemento(Destinatario<T>* dest, Remitente<T>* rem, Producto<F>* prod);
-   
-    void mostrarLista();
-    void mostrarListaRecursiva(Paquete<T, F>* nodoActual);
+
+    void mostrarLista(short n);
+    void mostrarListaRecursiva(Paquete<T, F>* nodoActual,short n);
 
     void ordenarElementosPorPrecio(short n);
 
@@ -58,12 +58,12 @@ void ListaEnlazada<T, F>::agregarElemento(Destinatario<T>* dest, Remitente<T>* r
 
 // Función pública para llamar a la función privada recursiva
 template<typename T, typename F>
-void ListaEnlazada<T, F>::mostrarLista() {
-    mostrarListaRecursiva(primero);
+void ListaEnlazada<T, F>::mostrarLista(short n) {
+    mostrarListaRecursiva(primero,n);
 }
 
 template<typename T, typename F>
-void ListaEnlazada<T, F>::mostrarListaRecursiva(Paquete<T, F>* nodoActual) {
+void ListaEnlazada<T, F>::mostrarListaRecursiva(Paquete<T, F>* nodoActual, short n) {
     if (nodoActual == nullptr) {
         return;
     }
@@ -92,7 +92,7 @@ void ListaEnlazada<T, F>::mostrarListaRecursiva(Paquete<T, F>* nodoActual) {
         std::cout << "\nPrecio: " << nodoActual->producto->getPrecio();
         std::cout << "\n---------------------------------------";
 
-        mostrarListaRecursiva(nodoActual->siguiente);
+        mostrarListaRecursiva(nodoActual->siguiente,n-1);
     }
 }
 
