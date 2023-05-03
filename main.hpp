@@ -57,6 +57,19 @@ int main() {
     std::cout << "Distrito: ";
     std::getline(std::cin, distritoDestinatario);
     std::cout << "Provincia: ";
+    std::getline(std::cin, provinciaDestinatario);
+    std::cout <<  "Departamento: ";
+    Ubicacion<std::string> ubicacionDestinatario;
+    ubicacionDestinatario.setDistrito(distritoDestinatario);
+    ubicacionDestinatario.setProvincia(provinciaDestinatario);
+    ubicacionDestinatario.setDepartamento(departamentoDestinatario);
+    Destinatario<std::string> Destinatario(ubicacionDestinatario);
+    Destinatario.setDni(dniDestinatario);
+    Destinatario.setNombre(nombreDestinatario);
+    Destinatario.setCelular(celularDestinatario);
+    Destinatario.setDireccion(direccionDestinatario);
+    Destinatario.setReferencias(referenciasDestinatario);
+                
                 break;
             }
             case 2: {
