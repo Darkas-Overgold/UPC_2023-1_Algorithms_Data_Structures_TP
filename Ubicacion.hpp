@@ -9,6 +9,7 @@ private:
     T provincia;
     T departamento;
 public:
+
     void setDistrito(T distrito);
     void setDepartamento(T departamento);
     void setProvincia(T provincia);
@@ -16,7 +17,7 @@ public:
     T getProvincia();
     T getDistrito();
     T getDepartamento();
-};
+}; 
 //Setters
 template <typename T>
 void Ubicacion<T>::setDistrito(T distrito) {
