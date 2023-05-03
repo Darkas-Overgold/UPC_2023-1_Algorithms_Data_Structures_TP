@@ -1,3 +1,5 @@
+#pragma once
+
 #include "Ubicacion.hpp"
 #include <iostream>
 
