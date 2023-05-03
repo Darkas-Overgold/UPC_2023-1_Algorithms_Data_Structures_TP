@@ -69,6 +69,7 @@ int main() {
     Destinatario.setCelular(celularDestinatario);
     Destinatario.setDireccion(direccionDestinatario);
     Destinatario.setReferencias(referenciasDestinatario);
+    
                 
                 
     //datos del producto
@@ -90,6 +91,9 @@ int main() {
                 
      
                 
+                
+                
+           
                 break;
             }
             case 2: {
