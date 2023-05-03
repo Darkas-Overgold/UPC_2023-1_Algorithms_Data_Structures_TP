@@ -70,6 +70,26 @@ int main() {
     Destinatario.setDireccion(direccionDestinatario);
     Destinatario.setReferencias(referenciasDestinatario);
                 
+                
+    //datos del producto
+                
+    std::cout << "\nAGREGAR datos del Producto\n";
+                std::cout << "Ingrese el peso (kg): ";
+                double peso;
+                std::cin >> peso;
+                std::cout << "Ingrese la altura (cm): ";
+                double alto;
+                std::cin >> alto;
+                std::cout << "Ingrese el ancho (cm): ";
+                double ancho;
+                std::cin >> ancho;
+                std::cout << "Ingrese la longitud (cm): ";
+                double largo;
+                std::cin >> largo;
+                Producto<double> producto(peso, alto, ancho, largo);
+                
+     
+                
                 break;
             }
             case 2: {
@@ -87,8 +107,7 @@ int main() {
                     }
                 }
                 break;
-            }
-            case 3:
+                case 3:
                 std::cout << "Saliendo del programa...\n";
                 break;
             default:
