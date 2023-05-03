@@ -73,7 +73,7 @@ int main() {
         list.agregarElemento(destinatario, remitente, producto);
     }
 
-    list.mostrarLista();
+    list.mostrarLista(n);
 
 
 
