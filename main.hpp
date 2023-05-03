@@ -7,6 +7,7 @@
 #include "Paquete.hpp"
 int main() {
     ListaDobleEnlazada<Producto<int>> lista;
+   
 
     int opcion;
     do {
@@ -72,6 +73,7 @@ int main() {
     Destinatario.setCelular(celularDestinatario);
     Destinatario.setDireccion(direccionDestinatario);
     Destinatario.setReferencias(referenciasDestinatario);
+    
                 
                 
     //datos del producto
@@ -92,7 +94,8 @@ int main() {
                 Producto<double> producto(peso, alto, ancho, largo);
                 
      
-                
+                Paquete* paquete= Paquete(remitente,Destinatario,producto);
+                lista.agregarAlInicio(paquete);
                 break;
             }
             case 2: {
