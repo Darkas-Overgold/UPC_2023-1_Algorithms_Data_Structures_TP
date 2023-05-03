@@ -15,20 +15,48 @@ int main() {
 
         switch (opcion) {
             case 1: {
-                int peso, alto, ancho, largo;
-                std::cout << "Ingrese el peso del producto: ";
-                std::cin >> peso;
-                std::cout << "Ingrese la altura del producto: ";
-                std::cin >> alto;
-                std::cout << "Ingrese el ancho del producto: ";
-                std::cin >> ancho;
-                std::cout << "Ingrese la longitud del producto: ";
-                std::cin >> largo;
+                std::string dniRemitente, nombreRemitente, celularRemitente, distritoRemitente, provinciaRemitente, departamentoRemitente;
+    std::cout << "Ingrese los datos del remitente:\n";
+    std::cout << "DNI: ";
+    std::cin >> dniRemitente;
+    std::cout << "Nombre: ";
+    std::cin.ignore();
+    std::getline(std::cin, nombreRemitente);
+    std::cout << "Celular: ";
+    std::cin >> celularRemitente;
+    std::cout << "Distrito: ";
+    std::cin.ignore();
+    std::getline(std::cin, distritoRemitente);
+    std::cout << "Provincia: ";
+    std::getline(std::cin, provinciaRemitente);
+    std::cout << "Departamento: ";
+    std::getline(std::cin, departamentoRemitente);
+    Ubicacion<std::string> ubicacionRemitente;
+    ubicacionRemitente.setDistrito(distritoRemitente);
+    ubicacionRemitente.setProvincia(provinciaRemitente);
+    ubicacionRemitente.setDepartamento(departamentoRemitente);
+    Remitente<std::string> remitente(ubicacionRemitente);
+    remitente.setDni(dniRemitente);
+    remitente.setNombre(nombreRemitente);
+    remitente.setCelular(celularRemitente);
 
-                Producto<int> producto(peso, alto, ancho, largo);
-                lista.agregar(producto);
-
-                std::cout << "Producto agregado correctamente\n";
+    std::string dniDestinatario, nombreDestinatario, celularDestinatario, direccionDestinatario, referenciasDestinatario, distritoDestinatario, provinciaDestinatario, departamentoDestinatario;
+    std::cout << "Ingrese los datos del destinatario:\n";
+    std::cout << "DNI: ";
+    std::cin >> dniDestinatario;
+    std::cout << "Nombre: ";
+    std::cin.ignore();
+    std::getline(std::cin, nombreDestinatario);
+    std::cout << "Celular: ";
+    std::cin >> celularDestinatario;
+    std::cout << "Direccion: ";
+    std::cin.ignore();
+    std::getline(std::cin, direccionDestinatario);
+    std::cout << "Referencias: ";
+    std::getline(std::cin, referenciasDestinatario);
+    std::cout << "Distrito: ";
+    std::getline(std::cin, distritoDestinatario);
+    std::cout << "Provincia: ";
                 break;
             }
             case 2: {
