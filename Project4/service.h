@@ -6,9 +6,12 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
+#include "Hashtable.h"
 class service {
 private:
-    ListaDobleEnlazada<Paquete< std::string>*>* lista;
+    ListaDobleEnlazada<Paquete< std::string, double>*>* lista;
+    HashTabla<Paquete< std::string, double>*>* hash;
+    
 public:
     service();
     void AgregarPaquete();
@@ -75,7 +78,7 @@ public:
         return  Destinatario;
     }
     
-    Producto<std::string> CrearProducto() {
+    Producto<double> CrearProducto() {
 
         std::cout << "\nAGREGAR datos del Producto\n";
         std::cout << "Ingrese el peso (kg): ";
@@ -90,7 +93,7 @@ public:
         std::cout << "Ingrese la longitud (cm): ";
         double largo;
         std::cin >> largo;
-        Producto<std::string> producto(std::to_string(peso), std::to_string(alto), std::to_string(ancho), std::to_string(largo));
+        Producto<double> producto(peso, alto,ancho, largo);
         return producto;
     };
     void mostrar();
@@ -101,8 +104,8 @@ public:
 
 service::service()
 {
-    lista = new  ListaDobleEnlazada< Paquete< std::string>*>();
-
+    lista = new  ListaDobleEnlazada< Paquete< std::string, double>*>();
+    hash = new HashTabla<Paquete< std::string, double>*>();
 };
 
 void service::AgregarPaquete()
@@ -111,10 +114,10 @@ void service::AgregarPaquete()
     //datos del producto
     Remitente<std::string> remitente = CrearRemitente();
     Destinatario<std::string> Destinatario = CrearDestinatario();
-    Producto<std::string> producto=CrearProducto();
-    Paquete<std::string>* paquete = new Paquete<std::string>(remitente, Destinatario, producto);
-
-    lista->agregarAlInicio(new Paquete<std::string>(remitente, Destinatario, producto));
+    Producto<double> producto=CrearProducto();
+    Paquete<std::string,double>* paquete = new Paquete<std::string, double>(remitente, Destinatario, producto);
+    
+    lista->agregarAlInicio(new Paquete<std::string, double>(remitente, Destinatario, producto));
 
 
 }

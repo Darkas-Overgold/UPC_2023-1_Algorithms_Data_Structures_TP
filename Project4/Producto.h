@@ -12,8 +12,12 @@ protected:
     T largo;
     T peso;
 public:
+    
     Producto(T peso, T alto, T ancho, T largo);
-
+    T precio() {
+        T precio = (2.0 * alto) + (2.0 * ancho) + (2.0 * largo) + (3.0 * peso);
+        return precio;
+    };
     string toString() {
         ostringstream ss;
         ss << peso;

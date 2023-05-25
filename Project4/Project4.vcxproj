@@ -114,6 +114,7 @@
   <ItemGroup>
     <ClInclude Include="Clientes.h" />
     <ClInclude Include="Destinatario.h" />
+    <ClInclude Include="Hashtable.h" />
     <ClInclude Include="ListaDobleEnlazada.h" />
     <ClInclude Include="Paquete.h" />
     <ClInclude Include="Producto.h" />

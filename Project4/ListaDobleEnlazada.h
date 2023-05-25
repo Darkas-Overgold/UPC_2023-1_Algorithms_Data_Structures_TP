@@ -120,20 +120,48 @@ public:
             return;  // La lista está vacía o tiene un solo elemento, no hay nada que ordenar
         }
 
-        bool intercambioRealizado;
-        do {
-            intercambioRealizado = false;
-            for (Iterator<T> it = begin(); it != end(); ++it) {
-                if (*it > *(it + 1)) {
-                    // Intercambiar los datos de los nodos
-                    T temp = *it;
-                    *it = *(it + 1);
-                    *(it + 1) = temp;
-                    intercambioRealizado = true;
-                }
-            }
-        } while (intercambioRealizado);
+        quicksort(cabeza, cola);
     }
+
+    void quicksort(Nodo<T>* izquierda, Nodo<T>* derecha) {
+        if (izquierda != nullptr && derecha != nullptr && izquierda != derecha && izquierda->anterior != derecha) {
+            Nodo<T>* pivot = particionar(izquierda, derecha);
+
+            // Ordenar recursivamente los subarreglos antes y después del pivote
+            if (pivot != nullptr && pivot->anterior != nullptr) {
+                quicksort(izquierda, pivot->anterior);
+            }
+            if (pivot != nullptr && pivot->siguiente != nullptr) {
+                quicksort(pivot->siguiente, derecha);
+            }
+        }
+    }
+
+    Nodo<T>* particionar(Nodo<T>* izquierda, Nodo<T>* derecha) {
+        T pivot = derecha->dato;
+        Nodo<T>* i = izquierda->anterior;
+
+        for (Nodo<T>* j = izquierda; j != derecha; j = j->siguiente) {
+            if (j->dato->precio <= pivot->precio) {
+                i = (i == nullptr) ? izquierda : i->siguiente;
+                intercambiarNodos(i, j);
+            }
+        }
+
+        i = (i == nullptr) ? izquierda : i->siguiente;
+        intercambiarNodos(i, derecha);
+
+        return i;
+    }
+
+    void intercambiarNodos(Nodo<T>* nodo1, Nodo<T>* nodo2) {
+        if (nodo1 != nullptr && nodo2 != nullptr && nodo1 != nodo2) {
+            T temp = nodo1->dato;
+            nodo1->dato = nodo2->dato;
+            nodo2->dato = temp;
+        }
+    }
+
 
 };
 
