@@ -6,7 +6,7 @@
 #include <iostream>
 template <class T,class I>
 class Paquete {
-private:
+public:
     Remitente<T> remitente;
     Destinatario<T> destinatario;
     Producto<I> producto;

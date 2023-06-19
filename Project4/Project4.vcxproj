@@ -112,6 +112,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BusquedaBinaria.h" />
     <ClInclude Include="Clientes.h" />
     <ClInclude Include="Destinatario.h" />
     <ClInclude Include="Hashtable.h" />
