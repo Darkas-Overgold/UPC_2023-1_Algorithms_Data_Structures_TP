@@ -161,7 +161,79 @@ public:
             nodo2->dato = temp;
         }
     }
+    Nodo<T>* busquedaBinaria(T valor) {
+        Nodo<T>* izquierda = cabeza;
+        Nodo<T>* derecha = cola;
 
+        while (izquierda != nullptr && derecha != nullptr && izquierda != derecha && izquierda->anterior != derecha) {
+            int middleIndex = (derecha->dato - izquierda->dato) / 2;
+            Nodo<T>* middle = izquierda;
+            for (int i = 0; i < middleIndex; i++) {
+                middle = middle->siguiente;
+            }
+
+            if (middle->dato == valor) {
+                return middle;
+            }
+            else if (middle->dato > valor) {
+                derecha = middle->anterior;
+            }
+            else {
+                izquierda = middle->siguiente;
+            }
+        }
+
+        return nullptr;
+    }
+    template <typename T>
+Nodo<T>* busquedaBinaria(ListaDobleEnlazada<Clientes<T>>& lista, T valorBuscado) {
+    Nodo<T>* izquierda = lista.getCabeza();
+    Nodo<T>* derecha = lista.getCola();
+
+    while (izquierda != nullptr && derecha != nullptr && izquierda != derecha && izquierda->anterior != derecha) {
+        Nodo<T>* medio = izquierda;
+        int i = 0;
+        while (medio != nullptr && i < ((derecha->dato - izquierda->dato) / 2)) {
+            medio = medio->siguiente;
+            i++;
+        }
+
+        if (medio->dato.getDni() == valorBuscado) {
+            return medio;
+        } else if (medio->dato.getDni() < valorBuscado) {
+            izquierda = medio->siguiente;
+        } else {
+            derecha = medio->anterior;
+        }
+    }
+
+    return nullptr; // No se encontró el valor buscado
+}
+Nodo<T>* busquedaBinaria(T valorBuscado) {
+    Nodo<T>* izquierda = cabeza;
+    Nodo<T>* derecha = cola;
+
+    while (izquierda != nullptr && derecha != nullptr && izquierda != derecha && izquierda->anterior != derecha) {
+        Nodo<T>* medio = izquierda;
+        int i = 0;
+        while (medio != nullptr && i < ((derecha->dato - izquierda->dato) / 2)) {
+            medio = medio->siguiente;
+            i++;
+        }
+
+        if (medio->dato->getDestinatario().getDni() == valorBuscado) {
+            return medio;
+        }
+        else if (medio->dato->getDestinatario().getDni() < valorBuscado) {
+            izquierda = medio->siguiente;
+        }
+        else {
+            derecha = medio->anterior;
+        }
+    }
+
+    return nullptr; // No se encontró el valor buscado
+}
 
 };
 

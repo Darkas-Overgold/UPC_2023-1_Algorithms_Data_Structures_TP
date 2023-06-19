@@ -7,10 +7,38 @@
 #include <sstream>
 #include <vector>
 #include "Hashtable.h"
+#include "ArbolBB.h"
+template<class T>
+void OpcionesDeBusqueda(T objeto) {
+    int op;
+    cout << "Seleccione que quieres encontrar el objeto\n";
+    cout << "1.-Precio\n";
+    cout << "2.- Nombre del remitente\n";
+    cout << "3.-Nombre del destinario\n";
+    cin >> op;
+
+    switch (op)
+    {
+    case 1:
+        objeto->precio;
+        break;
+    case 2:
+        objeto->remitente.getNombre();
+        break;
+    case 3:
+        objeto->producto.getNombre();
+    default:
+        break;
+    }
+
+};
+
+
 class service {
 private:
     ListaDobleEnlazada<Paquete< std::string, double>*>* lista;
     HashTabla<Paquete< std::string, double>*>* hash;
+    ArbolBB<Paquete< std::string, double>*>* arbol;
     
 public:
     service();
@@ -96,8 +124,10 @@ public:
         Producto<double> producto(peso, alto,ancho, largo);
         return producto;
     };
+    void BuscarPorPrecio();
     void mostrar();
-    void guardar();
+    
+    
     ~service();
 
 };
@@ -114,25 +144,32 @@ void service::AgregarPaquete()
     //datos del producto
     Remitente<std::string> remitente = CrearRemitente();
     Destinatario<std::string> Destinatario = CrearDestinatario();
-    Producto<double> producto=CrearProducto();
-    Paquete<std::string,double>* paquete = new Paquete<std::string, double>(remitente, Destinatario, producto);
+    Producto<double> producto = CrearProducto();
+    Paquete<std::string, double>* paquete = new Paquete<std::string, double>(remitente, Destinatario, producto);
     
     lista->agregarAlInicio(new Paquete<std::string, double>(remitente, Destinatario, producto));
+    hash->insertar(paquete->precio, paquete);
+    arbol->insertar(paquete);
+   
+    
+};
+void service::BuscarPorPrecio() {
+    int a;
+    cout << "Ingrese el precio para buscar";
+    cin >> a;
+    OpcionesDeBusqueda(hash->buscar(a));
 
 
-}
+};
 void service::mostrar()
 {
     
 }
-void service::guardar()
-{
-    
 
-}
 service::~service()
 {
     delete lista;
+    delete hash;
 }
 
 

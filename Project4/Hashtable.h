@@ -61,7 +61,7 @@ public:
         return numElementos;
     }
 
-    int buscar(int key) {
+    T buscar(int key) {
         int step = 0;
         int i, base;
         i = base = key % TABLE_SIZE;
@@ -77,5 +77,6 @@ public:
             i = (base + step) % TABLE_SIZE;
         }
     }
+
 };
 
