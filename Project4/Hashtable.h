@@ -67,9 +67,9 @@ public:
         i = base = key % TABLE_SIZE;
         while (true) {
             if (tabla[i] == nullptr)
-                return -1;
+                return T();
             else if (tabla[i]->getKey() == key) {
-                return i;
+                return tabla[i]->getValue();
             }
             else
                 step++;

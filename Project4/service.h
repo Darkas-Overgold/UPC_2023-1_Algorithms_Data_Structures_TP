@@ -25,7 +25,7 @@ void OpcionesDeBusqueda(T objeto) {
         objeto->remitente.getNombre();
         break;
     case 3:
-        objeto->producto.getNombre();
+        objeto->producto.getPeso();
     default:
         break;
     }
