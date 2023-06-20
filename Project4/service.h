@@ -147,7 +147,7 @@ void service::AgregarPaquete()
     
     lista->agregarAlInicio(new Paquete<std::string, double>(remitente, Destinatario, producto));
     hash->insertar(paquete->precio, paquete);
-
+  
 };
 void service::BuscarPorPrecio() {
     int a;

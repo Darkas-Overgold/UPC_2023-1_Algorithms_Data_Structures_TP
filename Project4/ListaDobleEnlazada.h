@@ -161,7 +161,31 @@ public:
             nodo2->dato = temp;
         }
     }
+    Nodo<T>* busquedaBinaria(T valorBuscado) {
+        Nodo<T>* izquierda = cabeza;
+        Nodo<T>* derecha = cola;
 
+        while (izquierda != nullptr && derecha != nullptr && izquierda != derecha && izquierda->anterior != derecha) {
+            Nodo<T>* medio = izquierda;
+            int i = 0;
+            while (medio != nullptr && i < ((derecha->dato->getDestinatario().getDni() - izquierda->dato->getDestinatario().getDni()) / 2)) {
+                medio = medio->siguiente;
+                i++;
+            }
+
+            if (medio->dato->getDestinatario().getDni() == valorBuscado) {
+                return medio;
+            }
+            else if (medio->dato->getDestinatario().getDni() < valorBuscado) {
+                izquierda = medio->siguiente;
+            }
+            else {
+                derecha = medio->anterior;
+            }
+        }
+
+        return nullptr; // No se encontró el valor buscado
+    }
 
 };
 
