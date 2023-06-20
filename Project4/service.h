@@ -7,6 +7,7 @@
 #include <sstream>
 #include <vector>
 #include "Hashtable.h"
+#include "ArbolBB.h"
 template<class T>
 void OpcionesDeBusqueda(T objeto) {
     int op;
@@ -37,6 +38,7 @@ class service {
 private:
     ListaDobleEnlazada<Paquete< std::string, double>*>* lista;
     HashTabla<Paquete< std::string, double>*>* hash;
+    ArbolBB<Paquete< std::string, double>*>* arbol;
     
 public:
     service();
@@ -147,6 +149,7 @@ void service::AgregarPaquete()
     
     lista->agregarAlInicio(new Paquete<std::string, double>(remitente, Destinatario, producto));
     hash->insertar(paquete->precio, paquete);
+    arbol->insertar(paquete);
   
 };
 void service::BuscarPorPrecio() {
