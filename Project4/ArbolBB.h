@@ -172,6 +172,7 @@ public:
         this->comparar = [](T a, T b)->int {return a->getDestinatario().getCelular() - b->getDestinatario().getCelular(); };
         raiz = nullptr;
     }
+    ArbolBB() {};
     bool insertar(T e) {
         return _insertar(raiz, e);
     }

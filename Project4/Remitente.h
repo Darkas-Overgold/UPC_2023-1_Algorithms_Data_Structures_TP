@@ -2,10 +2,10 @@
 #include "Clientes.h"
 #include <iostream>
 
-template <typename T>
-class Remitente : public Clientes<T> {
+template <typename T, typename I>
+class Remitente : public Clientes<I,T> {
 private:
 public:
-    Remitente(Ubicacion<T> ubicacion) : Clientes<T>(ubicacion) {}
+    Remitente(Ubicacion<T> ubicacion) : Clientes<T,I>(ubicacion) {}
 };
 

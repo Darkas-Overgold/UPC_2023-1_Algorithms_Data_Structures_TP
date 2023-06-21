@@ -2,11 +2,11 @@
 #include "Ubicacion.h"
 #include <iostream>
 
-template <typename T>
+template <typename T,typename I>
 class Clientes {
 protected:
     T dni;
-    T nombre;
+    I nombre;
     T celular;
     Ubicacion<T> ubicacion;
 public:
@@ -19,7 +19,7 @@ public:
 
     void setCelular(T celular);
     void setDni(T dni);
-    void setNombre(T nombre);
+    void setNombre(I nombre);
 
     T getCelular();
     T getDni();
@@ -28,14 +28,14 @@ public:
 
 };
 //Setters
-template <typename T>
-void Clientes<T>::setCelular(T celular) {
+template <typename T, typename I>
+void Clientes<T,I>::setCelular(T celular) {
     
         this->celular = celular;
     
 }
-template <typename T>
-void Clientes<T>::setDni(T dni) {
+template <typename T, typename I>
+void Clientes<T,I>::setDni(T dni) {
     if ((dni.length() != 8) || (!isdigit(dni[0]))) {
         std::cout << "Error en introducir el DNI\n";
     }
@@ -43,25 +43,25 @@ void Clientes<T>::setDni(T dni) {
         this->dni = dni;
     }
 }
-template <typename T>
-void Clientes<T>::setNombre(T nombre) {
+template <typename T, typename I>
+void Clientes<T,I>::setNombre(I nombre) {
     this->nombre = nombre;
 }
 //Getters
-template <typename T>
-T Clientes<T>::getCelular() {
+template <typename T, typename I>
+T Clientes<T,I>::getCelular() {
     return celular;
 }
-template <typename T>
-T Clientes<T>::getDni() {
+template <typename T, typename I>
+T Clientes<T,I>::getDni() {
     return dni;
 }
-template <typename T>
-T Clientes<T>::getNombre() {
+template <typename T, typename I>
+T Clientes<T,I>::getNombre() {
     return nombre;
 }
-template <typename T>
-Ubicacion<T> Clientes<T>::getUbicacion() {
+template <typename T, typename I>
+Ubicacion<T> Clientes<T,I>::getUbicacion() {
     return ubicacion;
 }
 

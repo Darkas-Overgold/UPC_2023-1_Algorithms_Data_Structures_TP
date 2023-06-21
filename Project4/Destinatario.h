@@ -1,13 +1,13 @@
 #include "Clientes.h"
 #include <iostream>
 
-template <typename T>
-class Destinatario : public Clientes<T> {
+template <typename T, typename I>
+class Destinatario : public Clientes<I,T> {
 private:
     T direc;
     T referencias;
 public:
-    Destinatario(Ubicacion<T> ubicacion=nullptr) : Clientes<T>(ubicacion) {}
+    Destinatario(Ubicacion<T> ubicacion=nullptr) : Clientes<I,T>(ubicacion) {}
 
     void setDireccion(T direccion);
     void setReferencias(T referencias);
@@ -15,11 +15,11 @@ public:
     T getReferencias();
 
 };
-template <typename T>
-void Destinatario<T>::setDireccion(T direccion) { this->direc = direccion; }
-template <typename T>
-void Destinatario<T>::setReferencias(T referencias) { this->referencias = referencias; }
-template <typename T>
-T Destinatario<T>::getDireccion() { return direc; }
-template <typename T>
-T Destinatario<T>::getReferencias() { return referencias; }
+template <typename T, typename I>
+void Destinatario<T,I>::setDireccion(T direccion) { this->direc = direccion; }
+template <typename T, typename I>
+void Destinatario<T, I>::setReferencias(T referencias) { this->referencias = referencias; }
+template <typename T, typename I>
+T Destinatario<T, I>::getDireccion() { return direc; }
+template <typename T, typename I>
+T Destinatario<T, I>::getReferencias() { return referencias; }

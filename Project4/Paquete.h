@@ -7,15 +7,15 @@
 template <class T,class I>
 class Paquete {
 public:
-    Remitente<T> remitente;
-    Destinatario<T> destinatario;
+    Remitente< I,T> remitente;
+    Destinatario < I, T > destinatario;
     Producto<I> producto;
     
 
 public:
     I precio;
-    
-    Paquete(Remitente<T> remitente, Destinatario<T> destinatario, Producto<I> producto) :remitente(remitente), destinatario(destinatario), producto(producto) { precio = producto.precio(); };
+    Paquete(){}
+    Paquete(Remitente<T> remitente, Destinatario<T,I> destinatario, Producto<I> producto) :remitente(remitente), destinatario(destinatario), producto(producto) { precio = producto.precio(); };
     ~Paquete() {}
     string toString() {
         ostringstream ss;
@@ -23,12 +23,12 @@ public:
         ss << producto.toString();
         return ss.str();
     }
-    Remitente<T> getRemitente();
-    Destinatario<T> getDestinatario();
+    Remitente< I,T> getRemitente();
+    Destinatario<T,I> getDestinatario();
     Producto<I> getProducto();
     // setters
-    void setRemitente(Remitente<T> remitente);
-    void setDestinatario(Destinatario<T> destinatario);
+    void setRemitente(Remitente<I,T> remitente);
+    void setDestinatario(Destinatario<T,I> destinatario);
     void setProducto(Producto<I> producto);
     
 
@@ -41,12 +41,12 @@ public:
 
 
 template <class T, class I>
-Remitente<T> Paquete<T,I>::getRemitente() {
+Remitente< I,T> Paquete<T,I>::getRemitente() {
     return remitente;
 }
 
 template <class T,class I>
-Destinatario<T> Paquete<T, I>::getDestinatario() {
+Destinatario<T,I> Paquete<T, I>::getDestinatario() {
     return destinatario;
 }
 
@@ -55,12 +55,12 @@ Producto<I> Paquete < T, I> ::getProducto() {
     return producto;
 }
 template <class T, class I>
-void Paquete<T, I>::setRemitente(Remitente<T> remitente) {
+void Paquete<T, I>::setRemitente(Remitente< I,T> remitente) {
     this->remitente = remitente;
 }
 
 template <class T, class I>
-void Paquete<T, I>::setDestinatario(Destinatario<T> destinatario) {
+void Paquete<T, I>::setDestinatario(Destinatario<T,I> destinatario) {
     this->destinatario = destinatario;
 }
 

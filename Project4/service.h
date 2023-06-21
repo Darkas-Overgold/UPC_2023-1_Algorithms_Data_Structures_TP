@@ -7,6 +7,7 @@
 #include <sstream>
 #include <vector>
 #include "Hashtable.h"
+#include "ArbolBB.h"
 template<class T>
 void OpcionesDeBusqueda(T objeto) {
     int op;
@@ -37,11 +38,12 @@ class service {
 private:
     ListaDobleEnlazada<Paquete< std::string, double>*>* lista;
     HashTabla<Paquete< std::string, double>*>* hash;
+    ArbolBB<Paquete< std::string, double>*>* Arbol;
     
 public:
     service();
     void AgregarPaquete();
-    Remitente<std::string> CrearRemitente() {
+    Remitente<std::string,double> CrearRemitente() {
         std::string dniRemitente, nombreRemitente, celularRemitente, distritoRemitente, provinciaRemitente, departamentoRemitente;
         std::cout << "Ingrese los datos del remitente:\n";
         std::cout << "DNI: ";
@@ -72,8 +74,9 @@ public:
 
 
     };
-    Destinatario<std::string> CrearDestinatario() {
-        std::string dniDestinatario, nombreDestinatario, celularDestinatario, direccionDestinatario, referenciasDestinatario, distritoDestinatario, provinciaDestinatario, departamentoDestinatario;
+    Destinatario<std::string,double> CrearDestinatario() {
+        double celularDestinatario, dniDestinatario;
+        std::string nombreDestinatario,  direccionDestinatario, referenciasDestinatario, distritoDestinatario, provinciaDestinatario, departamentoDestinatario;
         std::cout << "Ingrese los datos del destinatario:\n";
         std::cout << "DNI: ";
         std::cin >> dniDestinatario;
@@ -95,7 +98,7 @@ public:
         std::cin >> departamentoDestinatario;
         Ubicacion<std::string> ubicacionDestinatario(distritoDestinatario, provinciaDestinatario, departamentoDestinatario);
 
-        Destinatario<std::string> Destinatario(ubicacionDestinatario);
+        Destinatario<std::string,double> Destinatario(ubicacionDestinatario);
         Destinatario.setDni(dniDestinatario);
         Destinatario.setNombre(nombreDestinatario);
         Destinatario.setCelular(celularDestinatario);
@@ -125,7 +128,7 @@ public:
     void BuscarPorPrecio();
     void mostrar();
     void guardar();
-    
+    void BuscarPorCelular();
     ~service();
 
 };
@@ -134,6 +137,7 @@ service::service()
 {
     lista = new  ListaDobleEnlazada< Paquete< std::string, double>*>();
     hash = new HashTabla<Paquete< std::string, double>*>();
+    Arbol = new ArbolBB<Paquete<std::string, double >*>();
 };
 
 void service::AgregarPaquete()
@@ -141,12 +145,13 @@ void service::AgregarPaquete()
 
     //datos del producto
     Remitente<std::string> remitente = CrearRemitente();
-    Destinatario<std::string> Destinatario = CrearDestinatario();
+    Destinatario<std::string,double> Destinatario = CrearDestinatario();
     Producto<double> producto = CrearProducto();
     Paquete<std::string, double>* paquete = new Paquete<std::string, double>(remitente, Destinatario, producto);
     
     lista->agregarAlInicio(new Paquete<std::string, double>(remitente, Destinatario, producto));
     hash->insertar(paquete->precio, paquete);
+    Arbol->insertar(paquete);
   
 };
 void service::BuscarPorPrecio() {
@@ -157,6 +162,14 @@ void service::BuscarPorPrecio() {
 
 
 };
+void service::BuscarPorCelular() {
+    double a;
+    cout << "Ingrese el numero de celular";
+    cin >> a;
+    Paquete<std::string, double>* paquetePrueba = new Paquete<std::string, double>();
+    paquetePrueba->getDestinatario().setCelular(a);
+
+}
 void service::mostrar()
 {
     
