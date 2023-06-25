@@ -161,7 +161,10 @@ public:
             nodo2->dato = temp;
         }
     }
-    Nodo<T>* busquedaBinaria(T valorBuscado) {
+    Nodo<T>* busquedaBinaria(int b) {
+        T valorBuscado = cabeza->dato;
+        valorBuscado->getDestinatario().setDni(to_string(b);
+        
         Nodo<T>* izquierda = cabeza;
         Nodo<T>* derecha = cola;
 
@@ -186,7 +189,7 @@ public:
 
         return nullptr; // No se encontró el valor buscado
     }
-
+    
 };
 
 

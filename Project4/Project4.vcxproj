@@ -114,7 +114,9 @@
   <ItemGroup>
     <ClInclude Include="ArbolBB.h" />
     <ClInclude Include="Clientes.h" />
+    <ClInclude Include="DataSet.h" />
     <ClInclude Include="Destinatario.h" />
+    <ClInclude Include="Grafos.h" />
     <ClInclude Include="Hashtable.h" />
     <ClInclude Include="ListaDobleEnlazada.h" />
     <ClInclude Include="Paquete.h" />

@@ -36,12 +36,8 @@ void Clientes<T>::setCelular(T celular) {
 }
 template <typename T>
 void Clientes<T>::setDni(T dni) {
-    if ((dni.length() != 8) || (!isdigit(dni[0]))) {
-        std::cout << "Error en introducir el DNI\n";
-    }
-    else {
+    
         this->dni = dni;
-    }
 }
 template <typename T>
 void Clientes<T>::setNombre(T nombre) {
