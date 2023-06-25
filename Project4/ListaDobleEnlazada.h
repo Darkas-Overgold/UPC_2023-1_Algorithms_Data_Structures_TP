@@ -171,15 +171,16 @@ public:
         while (izquierda != nullptr && derecha != nullptr && izquierda != derecha && izquierda->anterior != derecha) {
             Nodo<T>* medio = izquierda;
             int i = 0;
-            while (medio != nullptr && i < ((derecha->dato->getDestinatario().getDni() - izquierda->dato->getDestinatario().getDni()) / 2)) {
+            while (medio != nullptr && i < ((std::stoi(derecha->dato->getDestinatario().getDni()) - std::stoi(izquierda->dato->getDestinatario().getDni())) / 2))
+            {
                 medio = medio->siguiente;
                 i++;
             }
 
-            if (medio->dato->getDestinatario().getDni() == valorBuscado) {
+            if (std::stoi(medio->dato->getDestinatario().getDni()) == std::stoi(valorBuscado->getDestinatario().getDni())) {
                 return medio;
             }
-            else if (medio->dato->getDestinatario().getDni() < valorBuscado) {
+            else if (std::stoi(medio->dato->getDestinatario().getDni()) < std::stoi(valorBuscado->getDestinatario().getDni())) {
                 izquierda = medio->siguiente;
             }
             else {
