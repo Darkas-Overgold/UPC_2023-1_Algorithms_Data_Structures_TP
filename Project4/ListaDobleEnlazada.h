@@ -163,7 +163,7 @@ public:
     }
     Nodo<T>* busquedaBinaria(int b) {
         T valorBuscado = cabeza->dato;
-        valorBuscado->getDestinatario().setDni(to_string(b);
+        valorBuscado->getDestinatario().setDni(to_string(b));
         
         Nodo<T>* izquierda = cabeza;
         Nodo<T>* derecha = cola;
